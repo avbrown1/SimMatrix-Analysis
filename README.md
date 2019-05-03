@@ -17,7 +17,7 @@ blinkPerl_v1.1.pl:
 
 #This script goes along with sim_matrix_to_pairs.pl. Given a set of samples with a certain similarity score, this script will cluster the samples into groups based on their similarity to one another. 
 
-blinkPerl_v1.1.pl -in <infile> [ -o <output file> -log <logFile> -s <summaryFile> ]
+blinkPerl_v1.1.pl -in <infile> [ -o <output_file> -log <log_file> -s <summary_file> ]
 
 mean_simMatrix.pl: 
 
