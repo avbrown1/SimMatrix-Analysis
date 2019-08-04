@@ -1,6 +1,10 @@
 # SimMatrix-Analysis
 This repository hold scripts to analyze a similarity matirx. 
 
+SNPRelate-Code.R:
+
+This is the code used for the R program SNPRelate. 
+
 extractTop-Match.pl: 
 
 #Given a sample in a Similarity matrix, this script will extract the top "n" matches (Highest similarity scores) to that particular sample. 
