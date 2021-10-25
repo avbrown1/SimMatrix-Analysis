@@ -16,14 +16,23 @@ sessionInfo()
 l
 # Import VCF file 
 vcf.fn <- "/Users/annebrown/Documents/SNPRelate/50K-Zhou302merged-edit2.vcf.gz"
+#Reformat VCF file in a GDS file
+#GDS – Genomic Data Structures used for storing genetic array-oriented data, and the file format used in the gdsfmt package. We use biallelic to only extract bi-allelic SNPs. 
 snpgdsVCF2GDS(vcf.fn, "Zhou302-50k.gds", method="biallelic.only")
+#Print information stored in the GDS file
 snpgdsSummary("Zhou302-50k.gds")
 
+#open the GDS file
 genofile <- snpgdsOpen("Zhou302-50k.gds")
+#Create a list/ Retrieve Sample names
 Z50ksample.id <- read.gdsn(index.gdsn(genofile, "sample.id"))
+#Create Similarity Matrix
 Zhou30250ksimMatrix <- snpgdsIBS(genofile, sample.id=Z50ksample.id, num.thread=4, verbose=TRUE)
+# rename rows as sample ids
 rownames(Zhou30250ksimMatrix$ibs) <- Z50ksample.id
+# rename columns as sample ids
 colnames(Zhou30250ksimMatrix$ibs) <- Z50ksample.id
+#export similarity matrix
 write.table(Zhou30250ksimMatrix$ibs, file="Zhou302-50k_simMat_SNPRelate.txt", quote=FALSE, sep ="\t")
 
 # Redo Korean Similarity matrix with Heterozygotes removed:
